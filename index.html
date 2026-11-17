@@ -3,68 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudio de Estados Fiat | Enmanuel Boutto - Guayanauto, C.A.</title>
+    <title>Estudio Creativo Fiat | Guayanauto, C.A.</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#e6007e">
     <style>
         :root {
-            --bg: #101216;
-            --card: #181b22;
-            --input: #222630;
-            --border: #2e3442;
+            --bg: #0c0e12;
+            --card: #151820;
+            --input: #1e222d;
+            --border: #2a303f;
             --text: #f8fafc;
             --muted: #94a3b8;
-            --fiat-fucsia: #e6007e;
-            --fiat-verde: #009e49;
-            --fiat-azul: #0055a5;
-            --fiat-amarillo: #ffd100;
+            --fucsia: #e6007e;
+            --verde: #009e49;
+            --azul: #0055a5;
+            --amarillo: #ffd100;
         }
-        * { box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+        * { box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
         body {
-            background-color: var(--bg);
+            background: var(--bg);
             color: var(--text);
             margin: 0;
-            padding: 16px 12px 40px;
+            padding: 14px 12px 44px;
             display: flex;
             justify-content: center;
         }
         .app {
             width: 100%;
-            max-width: 980px;
+            max-width: 1020px;
             display: grid;
             grid-template-columns: 1fr;
             gap: 18px;
         }
-        @media (min-width: 840px) {
-            .app { grid-template-columns: 1.08fr 0.92fr; align-items: start; }
+        @media (min-width: 860px) {
+            .app { grid-template-columns: 1.05fr 0.95fr; align-items: start; }
         }
         .panel {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 14px;
+            border-radius: 16px;
             padding: 16px;
             display: flex;
             flex-direction: column;
-            gap: 11px;
+            gap: 13px;
         }
-        .header-bar {
+        .topbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--border);
             padding-bottom: 10px;
         }
-        .header-bar h1 { margin: 0; font-size: 1.15rem; }
-        .flag-bars { display: flex; gap: 4px; }
-        .flag-bars span {
-            width: 6px;
-            height: 18px;
-            transform: skewX(-20deg);
-            border-radius: 2px;
-        }
+        .topbar h1 { margin: 0; font-size: 1.15rem; font-weight: 800; }
+        .flag { display: flex; gap: 4px; }
+        .flag span { width: 6px; height: 20px; transform: skewX(-20deg); border-radius: 2px; }
         .label {
-            font-size: 0.73rem;
+            font-size: 0.72rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.06em;
             color: var(--muted);
             margin-bottom: 4px;
             display: block;
@@ -74,65 +71,46 @@
             background: var(--input);
             border: 1px solid var(--border);
             color: var(--text);
-            border-radius: 8px;
+            border-radius: 9px;
             padding: 9px 11px;
             font-size: 0.92rem;
             outline: none;
         }
-        input:focus, select:focus { border-color: var(--fiat-fucsia); }
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-        .color-pills {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        .pill {
+        input:focus, select:focus { border-color: var(--fucsia); }
+        input[type="range"] { padding: 4px 0; accent-color: var(--fucsia); }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+        .color-row { display: flex; gap: 8px; flex-wrap: wrap; }
+        .color-btn {
+            flex: 1;
+            min-width: 72px;
             border: 2px solid transparent;
-            border-radius: 999px;
-            padding: 6px 13px;
+            border-radius: 10px;
+            padding: 8px 10px;
             font-size: 0.82rem;
-            font-weight: 700;
+            font-weight: 800;
             cursor: pointer;
             color: #fff;
             transition: 0.15s;
         }
-        .pill.active {
-            border-color: #fff;
-            transform: scale(1.05);
-        }
-        .btn-row {
-            display: grid;
-            grid-template-columns: 1.25fr 0.75fr;
-            gap: 10px;
-            margin-top: 4px;
-        }
+        .color-btn.active { border-color: #fff; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
+        .actions { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 10px; margin-top: 4px; }
         .btn {
             border: none;
-            border-radius: 10px;
+            border-radius: 11px;
             padding: 13px;
             font-size: 0.95rem;
-            font-weight: 700;
+            font-weight: 800;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 6px;
         }
-        .btn-random {
-            background: linear-gradient(135deg, var(--fiat-fucsia), var(--fiat-azul));
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(230, 0, 126, 0.35);
-        }
-        .btn-download {
-            background: var(--fiat-verde);
-            color: #fff;
-        }
+        .btn-magic { background: linear-gradient(135deg, var(--fucsia), var(--azul)); color: #fff; }
+        .btn-save { background: var(--verde); color: #fff; }
         .btn:active { transform: scale(0.98); }
-        .preview-wrap {
+        .preview-area {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -140,25 +118,25 @@
         }
         canvas {
             width: 100%;
-            max-width: 345px;
+            max-width: 350px;
             height: auto;
-            border-radius: 14px;
+            border-radius: 16px;
             border: 2px solid var(--border);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.5);
-            background: #121318;
+            box-shadow: 0 16px 36px rgba(0,0,0,0.55);
+            background: #0c0e12;
         }
-        .hint { font-size: 0.8rem; color: var(--muted); text-align: center; }
+        .hint { font-size: 0.78rem; color: var(--muted); text-align: center; }
     </style>
 </head>
 <body>
     <div class="app">
         <div class="panel">
-            <div class="header-bar">
+            <div class="topbar">
                 <div>
-                    <h1>Estudio de Estados Fiat</h1>
-                    <span style="font-size:0.8rem; color:var(--muted);">Guayanauto, C.A. • Enmanuel Boutto</span>
+                    <h1>Estudio Creativo FIAT</h1>
+                    <span style="font-size:0.78rem; color:var(--muted);">Guayanauto, C.A. • Enmanuel Boutto</span>
                 </div>
-                <div class="flag-bars" title="Fiat Mercosur">
+                <div class="flag">
                     <span style="background:#e6007e;"></span>
                     <span style="background:#009e49;"></span>
                     <span style="background:#0055a5;"></span>
@@ -172,801 +150,769 @@
                     <input type="file" id="inputFoto" accept="image/*">
                 </div>
                 <div>
-                    <label class="label">2. Modelo Fiat</label>
+                    <label class="label">2. Modelo Fiat (Venezuela)</label>
                     <select id="selectModelo"></select>
                 </div>
             </div>
 
             <div>
-                <label class="label">3. Ventaja / Gancho Comercial</label>
-                <input type="text" id="inputVentaja">
+                <label class="label">Ajuste Vertical de la Foto (Encuadre)</label>
+                <input type="range" id="sliderEncuadre" min="-200" max="200" value="0">
+            </div>
+
+            <div>
+                <label class="label">3. Puntos Fuertes del Modelo (3 Etiquetas)</label>
+                <div class="grid-3">
+                    <input type="text" id="tag1">
+                    <input type="text" id="tag2">
+                    <input type="text" id="tag3">
+                </div>
             </div>
 
             <div class="grid-2">
                 <div>
-                    <label class="label">Etiqueta de Urgencia</label>
+                    <label class="label">Cintillo / Promoción</label>
                     <input type="text" id="inputBadge" value="ENTREGA INMEDIATA 0 KM">
                 </div>
                 <div>
-                    <label class="label">Cifra / Oferta Clave</label>
+                    <label class="label">Cifra Principal</label>
                     <input type="text" id="inputPrecio" value="Inicial desde 30%">
                 </div>
             </div>
 
             <div class="grid-2">
                 <div>
-                    <label class="label">Subtexto Financiero</label>
-                    <input type="text" id="inputSubprecio" value="Planes de 12, 24 y 36 meses">
+                    <label class="label">Detalle del Plan</label>
+                    <input type="text" id="inputSubprecio" value="Financiamiento hasta 36 meses">
                 </div>
                 <div>
-                    <label class="label">Llamado a la Acción (CTA)</label>
-                    <input type="text" id="inputCTA" value="📲 Escríbeme ahora y cotizamos">
+                    <label class="label">Tu Contacto WhatsApp</label>
+                    <input type="text" id="inputContacto" value="Enmanuel Boutto • 0414-XXXXXXX">
                 </div>
             </div>
 
             <div>
-                <label class="label">Tu Contacto WhatsApp</label>
-                <input type="text" id="inputContacto" value="Enmanuel Boutto • 0414-XXXXXXX">
-            </div>
-
-            <div class="grid-2">
-                <div>
-                    <label class="label">4. Plantilla (20 Estilos Impacto)</label>
-                    <select id="selectPlantilla"></select>
-                </div>
-                <div>
-                    <label class="label">5. Textura de Fondo</label>
-                    <select id="selectTextura">
-                        <option value="0">Limpio / Sólido</option>
-                        <option value="1">Malla Tecnológica (Puntos)</option>
-                        <option value="2">Líneas Deportivas Velocidad</option>
-                        <option value="3">Aros Geométricos</option>
-                        <option value="4">Trama Fibra de Carbono</option>
-                    </select>
-                </div>
+                <label class="label">4. Estilo de Diseño (8 Arquitecturas Únicas)</label>
+                <select id="selectPlantilla"></select>
             </div>
 
             <div>
-                <label class="label">6. Color Principal (Fiat Brasil / Mercosur)</label>
-                <div class="color-pills" id="paletaColores">
-                    <button type="button" class="pill active" data-color="#e6007e" style="background:#e6007e;">Fucsia</button>
-                    <button type="button" class="pill" data-color="#009e49" style="background:#009e49;">Verde</button>
-                    <button type="button" class="pill" data-color="#0055a5" style="background:#0055a5;">Azul</button>
-                    <button type="button" class="pill" data-color="#ffd100" style="background:#ffd100; color:#111;">Amarillo</button>
+                <label class="label">5. Color de Marca (Fiat Mercosur)</label>
+                <div class="color-row" id="paletaColores">
+                    <button type="button" class="color-btn active" data-color="#e6007e" style="background:#e6007e;">Fucsia</button>
+                    <button type="button" class="color-btn" data-color="#009e49" style="background:#009e49;">Verde</button>
+                    <button type="button" class="color-btn" data-color="#0055a5" style="background:#0055a5;">Azul</button>
+                    <button type="button" class="color-btn" data-color="#ffd100" style="background:#ffd100; color:#111;">Amarillo</button>
                 </div>
             </div>
 
-            <div class="btn-row">
-                <button type="button" class="btn btn-random" id="btnAleatorio">🎲 Diseño Aleatorio</button>
-                <button type="button" class="btn btn-download" id="btnDescargar">⬇️ Descargar</button>
+            <div class="actions">
+                <button type="button" class="btn btn-magic" id="btnAleatorio">✨ Nuevo Diseño Único</button>
+                <button type="button" class="btn btn-save" id="btnDescargar">⬇️ Guardar PNG</button>
             </div>
         </div>
 
-        <div class="panel preview-wrap">
-            <span class="label">Vista Previa Estado WhatsApp (1080 × 1920)</span>
+        <div class="panel preview-area">
+            <span class="label">Estado Vertical WhatsApp (1080 × 1920)</span>
             <canvas id="lienzo" width="1080" height="1920"></canvas>
-            <div class="hint" id="infoEstilo">20 plantillas de venta × 4 colores × 5 texturas = 400 diseños distintos.</div>
+            <div class="hint">Cada plantilla cambia por completo la composición, iluminación y tipografía.</div>
         </div>
     </div>
 
     <script>
-        const CATALOGO_FIAT = [
-            { nombre: "FIAT ARGO ENDURANCE", ventaja: "Robusto y alto • Suspensión reforzada para todo uso" },
-            { nombre: "FIAT ARGO TREKKING", ventaja: "Estilo aventurero • Despeje superior • Sinc. y Aut." },
-            { nombre: "FIAT CRONOS", ventaja: "Maletero gigante de 525L • Elegancia y bajo consumo" },
-            { nombre: "FIAT FIORINO", ventaja: "Tu aliado comercial • Gran capacidad de carga urbana" },
-            { nombre: "FIAT PULSE DRIVE", ventaja: "SUV moderno • Seguridad, altura y confort diario" },
-            { nombre: "FIAT PULSE AUDACE", ventaja: "Motor Turbo • Tecnología de punta y diseño deportivo" },
-            { nombre: "FIAT TORO FREEDOM", ventaja: "Pick-up versátil • Doble puerta trasera horizontal" },
-            { nombre: "FIAT FASTBACK ABARTH", ventaja: "SUV Coupé deportivo • ADN Abarth • Potencia pura" }
+        const MODELOS_FIAT = [
+            { nombre: "ARGO ENDURANCE", sub: "1.3 FIREFLY", tags: ["Suspensión Reforzada", "Despeje Alto", "Bajo Consumo"] },
+            { nombre: "ARGO TREKKING", sub: "SINC. Y AUT.", tags: ["Diseño Aventurero", "Pantalla 7'' CarPlay", "Altura Superior"] },
+            { nombre: "CRONOS", sub: "SEDÁN FAMILIAR", tags: ["Maletero 525L", "Confort Total", "Eficiencia 1.3"] },
+            { nombre: "FIORINO", sub: "CARGA URBANA", tags: ["650 Kg de Carga", "3.3 m³ Volumen", "Máxima Rentabilidad"] },
+            { nombre: "PULSE DRIVE", sub: "SUV COMPACTO", tags: ["4 Airbags Serie", "Multimedia 10.1''", "Diseño Italiano"] },
+            { nombre: "PULSE AUDACE", sub: "TURBO 200 CVT", tags: ["Motor Turbo 120cv", "Cargador Inalámbrico", "Modo Sport"] },
+            { nombre: "TORO FREEDOM", sub: "PICK-UP SUP", tags: ["Doble Puerta Trasera", "Confort de SUV", "Platón Versátil"] },
+            { nombre: "FASTBACK ABARTH", sub: "TURBO 270 • 175 CV", tags: ["0-100 en 8.5s", "Escape Doble Abarth", "SUV Coupé"] }
         ];
 
-        const PLANTILLAS = [
-            "01. Clásico Deportivo Oscuro",
-            "02. Neón / Resplandor Nocturno",
-            "03. Galería Blanca Ejecutiva",
-            "04. Titular Gigante Arriba",
-            "05. Impacto Color Completo",
-            "06. Foto Pantalla Completa (Full-Bleed)",
-            "07. Póster Marca de Agua Gigante",
-            "08. Tarjeta Flotante Glass",
-            "09. Corte Diagonal Dinámico",
-            "10. Cinta Lateral Fiat Flag",
-            "11. Enfoque Minimalista",
-            "12. Oferta Flash Doble Marco",
-            "13. Showroom VIP (Reflector Superior)",
-            "14. Sello de Oportunidad / Etiqueta",
-            "15. Pantalla Dividida 50/50 (Split)",
-            "16. Entrega Real (Marco Historia)",
-            "17. Edición Sport Carbono",
-            "18. Destello Atardecer Guayana",
-            "19. Ficha Técnica de Concesionario",
-            "20. Cierre Directo (Botón WhatsApp)"
+        const ESTILOS = [
+            "01. Showroom Nocturno (Luz de Estudio)",
+            "02. Portada de Revista Automotriz",
+            "03. Impacto Vibrante Fiat Brasil",
+            "04. Cine Full-Bleed (Foto Completa)",
+            "05. Galería Urbana & Patrón Flag",
+            "06. Corte Diagonal Dinámico",
+            "07. Ficha Técnica & Specs Pro",
+            "08. Catálogo Minimalista Blanco"
         ];
 
-        const PALETA_MERCOSUR = ["#e6007e", "#009e49", "#0055a5", "#ffd100"];
+        const FLAG_COLORS = ["#e6007e", "#009e49", "#0055a5", "#ffd100"];
         let colorActivo = "#e6007e";
-        let plantillaActiva = 12; // Arranca con Showroom VIP
-        let texturaActiva = 0;
+        let estiloActivo = 0;
         let imagenVehiculo = null;
+        let offsetYFoto = 0;
 
         const canvas = document.getElementById("lienzo");
         const ctx = canvas.getContext("2d");
 
+        // Inicializar selectores
         const selModelo = document.getElementById("selectModelo");
-        CATALOGO_FIAT.forEach((m, i) => {
+        MODELOS_FIAT.forEach((m, i) => {
             const opt = document.createElement("option");
             opt.value = i;
-            opt.textContent = m.nombre;
+            opt.textContent = `FIAT ${m.nombre}`;
             selModelo.appendChild(opt);
         });
         selModelo.value = 1;
-        document.getElementById("inputVentaja").value = CATALOGO_FIAT[1].ventaja;
 
         const selPlantilla = document.getElementById("selectPlantilla");
-        PLANTILLAS.forEach((nombre, i) => {
+        ESTILOS.forEach((e, i) => {
             const opt = document.createElement("option");
             opt.value = i;
-            opt.textContent = nombre;
+            opt.textContent = e;
             selPlantilla.appendChild(opt);
         });
-        selPlantilla.value = plantillaActiva;
+
+        function cargarTagsModelo(idx) {
+            const m = MODELOS_FIAT[idx];
+            document.getElementById("tag1").value = m.tags[0];
+            document.getElementById("tag2").value = m.tags[1];
+            document.getElementById("tag3").value = m.tags[2];
+        }
+        cargarTagsModelo(1);
 
         selModelo.addEventListener("change", (e) => {
-            const item = CATALOGO_FIAT[e.target.value];
-            if (item) {
-                document.getElementById("inputVentaja").value = item.ventaja;
-                dibujarTarjeta();
-            }
+            cargarTagsModelo(e.target.value);
+            dibujar();
         });
 
         selPlantilla.addEventListener("change", (e) => {
-            plantillaActiva = parseInt(e.target.value, 10);
-            dibujarTarjeta();
+            estiloActivo = parseInt(e.target.value, 10);
+            dibujar();
         });
 
-        document.getElementById("selectTextura").addEventListener("change", (e) => {
-            texturaActiva = parseInt(e.target.value, 10);
-            dibujarTarjeta();
+        document.getElementById("sliderEncuadre").addEventListener("input", (e) => {
+            offsetYFoto = parseInt(e.target.value, 10);
+            dibujar();
         });
 
         document.getElementById("inputFoto").addEventListener("change", (e) => {
-            const archivo = e.target.files[0];
-            if (!archivo) return;
-            const lector = new FileReader();
-            lector.onload = (ev) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (ev) => {
                 const img = new Image();
                 img.onload = () => {
                     imagenVehiculo = img;
-                    dibujarTarjeta();
+                    dibujar();
                 };
                 img.src = ev.target.result;
             };
-            lector.readAsDataURL(archivo);
+            reader.readAsDataURL(file);
         });
 
-        document.querySelectorAll("#paletaColores .pill").forEach(btn => {
+        document.querySelectorAll("#paletaColores .color-btn").forEach(btn => {
             btn.addEventListener("click", () => {
-                document.querySelectorAll("#paletaColores .pill").forEach(b => b.classList.remove("active"));
+                document.querySelectorAll("#paletaColores .color-btn").forEach(b => b.classList.remove("active"));
                 btn.classList.add("active");
                 colorActivo = btn.dataset.color;
-                dibujarTarjeta();
+                dibujar();
             });
         });
 
-        ["inputVentaja", "inputBadge", "inputPrecio", "inputSubprecio", "inputCTA", "inputContacto"].forEach(id => {
-            document.getElementById(id).addEventListener("input", dibujarTarjeta);
+        ["tag1", "tag2", "tag3", "inputBadge", "inputPrecio", "inputSubprecio", "inputContacto"].forEach(id => {
+            document.getElementById(id).addEventListener("input", dibujar);
         });
 
         document.getElementById("btnAleatorio").addEventListener("click", () => {
-            let nuevaPlantilla;
+            let siguiente;
             do {
-                nuevaPlantilla = Math.floor(Math.random() * PLANTILLAS.length);
-            } while (nuevaPlantilla === plantillaActiva);
-            plantillaActiva = nuevaPlantilla;
-            selPlantilla.value = plantillaActiva;
+                siguiente = Math.floor(Math.random() * ESTILOS.length);
+            } while (siguiente === estiloActivo);
+            estiloActivo = siguiente;
+            selPlantilla.value = estiloActivo;
 
-            const otrosColores = PALETA_MERCOSUR.filter(c => c !== colorActivo);
-            colorActivo = otrosColores[Math.floor(Math.random() * otrosColores.length)];
-            document.querySelectorAll("#paletaColores .pill").forEach(b => {
+            const disponibles = FLAG_COLORS.filter(c => c !== colorActivo);
+            colorActivo = disponibles[Math.floor(Math.random() * disponibles.length)];
+            document.querySelectorAll("#paletaColores .color-btn").forEach(b => {
                 b.classList.toggle("active", b.dataset.color === colorActivo);
             });
-
-            texturaActiva = Math.floor(Math.random() * 5);
-            document.getElementById("selectTextura").value = texturaActiva;
-
-            dibujarTarjeta();
+            dibujar();
         });
 
         document.getElementById("btnDescargar").addEventListener("click", () => {
-            const modeloNombre = CATALOGO_FIAT[selModelo.value].nombre.toLowerCase().replace(/\s+/g, "_");
-            const enlace = document.createElement("a");
-            enlace.download = `estado_${modeloNombre}_p${plantillaActiva + 1}.png`;
-            enlace.href = canvas.toDataURL("image/png");
-            enlace.click();
+            const mod = MODELOS_FIAT[selModelo.value].nombre.toLowerCase().replace(/\s+/g, "_");
+            const link = document.createElement("a");
+            link.download = `fiat_${mod}_diseno${estiloActivo + 1}.png`;
+            link.href = canvas.toDataURL("image/png");
+            link.click();
         });
 
-        function dibujarLogoFiatFlag(x, y, escala = 1) {
+        // --- RECURSOS GRÁFICOS FIAT ---
+        function dibujarMarcaFiat(x, y, colorTexto = "#ffffff", escala = 1) {
             ctx.save();
             ctx.translate(x, y);
-            PALETA_MERCOSUR.forEach((col, idx) => {
+            // Tipografía FIAT estilizada
+            ctx.fillStyle = colorTexto;
+            ctx.font = `italic 900 ${Math.round(52 * escala)}px 'Arial Black', 'Segoe UI', sans-serif`;
+            ctx.fillText("FIAT", 0, 44 * escala);
+
+            // 4 Barras inclinadas Fiat Flag al lado
+            const startX = 142 * escala;
+            FLAG_COLORS.forEach((col, i) => {
                 ctx.fillStyle = col;
                 ctx.beginPath();
-                const offset = idx * 26 * escala;
-                ctx.moveTo(offset + 12 * escala, 0);
-                ctx.lineTo(offset + 28 * escala, 0);
-                ctx.lineTo(offset + 16 * escala, 56 * escala);
-                ctx.lineTo(offset, 56 * escala);
+                const ox = startX + i * (18 * escala);
+                ctx.moveTo(ox + 9 * escala, 4 * escala);
+                ctx.lineTo(ox + 21 * escala, 4 * escala);
+                ctx.lineTo(ox + 12 * escala, 44 * escala);
+                ctx.lineTo(ox, 44 * escala);
                 ctx.closePath();
                 ctx.fill();
             });
             ctx.restore();
         }
 
-        function dibujarTexturaFondo(W, H, esClaro) {
-            if (texturaActiva === 0) return;
+        function dibujarFoto(x, y, w, h, radio = 0) {
             ctx.save();
-            ctx.globalAlpha = esClaro ? 0.08 : 0.12;
-            ctx.fillStyle = esClaro ? "#0f172a" : "#ffffff";
-            ctx.strokeStyle = esClaro ? "#0f172a" : "#ffffff";
+            if (radio > 0) {
+                ctx.beginPath();
+                ctx.roundRect(x, y, w, h, radio);
+                ctx.clip();
+            } else {
+                ctx.beginPath();
+                ctx.rect(x, y, w, h);
+                ctx.clip();
+            }
 
-            if (texturaActiva === 1) {
-                for (let x = 40; x < W; x += 65) {
-                    for (let y = 40; y < H; y += 65) {
-                        ctx.beginPath();
-                        ctx.arc(x, y, 4, 0, Math.PI * 2);
-                        ctx.fill();
-                    }
-                }
-            } else if (texturaActiva === 2) {
-                ctx.lineWidth = 4;
-                for (let i = -H; i < W + H; i += 90) {
-                    ctx.beginPath();
-                    ctx.moveTo(i, 0);
-                    ctx.lineTo(i - 550, H);
-                    ctx.stroke();
-                }
-            } else if (texturaActiva === 3) {
-                ctx.lineWidth = 10;
-                ctx.beginPath();
-                ctx.arc(W * 0.85, H * 0.25, 360, 0, Math.PI * 2);
-                ctx.stroke();
-                ctx.beginPath();
-                ctx.arc(W * 0.15, H * 0.78, 440, 0, Math.PI * 2);
-                ctx.stroke();
-            } else if (texturaActiva === 4) {
-                // Trama fibra de carbono
-                ctx.globalAlpha = esClaro ? 0.06 : 0.16;
-                for (let y = 0; y < H; y += 24) {
-                    for (let x = (y % 48 === 0 ? 0 : 12); x < W; x += 24) {
-                        ctx.fillRect(x, y, 10, 10);
-                    }
-                }
+            if (imagenVehiculo) {
+                const scale = Math.max(w / imagenVehiculo.width, h / imagenVehiculo.height);
+                const nw = imagenVehiculo.width * scale;
+                const nh = imagenVehiculo.height * scale;
+                ctx.drawImage(imagenVehiculo, x + (w - nw) / 2, y + (h - nh) / 2 + offsetYFoto, nw, nh);
+            } else {
+                ctx.fillStyle = "#1c212c";
+                ctx.fillRect(x, y, w, h);
+                ctx.fillStyle = "#64748b";
+                ctx.font = "700 32px 'Segoe UI', sans-serif";
+                ctx.textAlign = "center";
+                ctx.fillText("📷 Sube la foto del vehículo arriba", x + w / 2, y + h / 2);
+                ctx.textAlign = "left";
             }
             ctx.restore();
         }
 
-        function dibujarImagenAjustada(img, x, y, w, h, radio = 28) {
-            ctx.save();
-            ctx.beginPath();
-            ctx.roundRect(x, y, w, h, radio);
-            ctx.clip();
+        function dibujarPildorasSpecs(x, y, anchoMax, fondoPill, colorTexto) {
+            const tags = [
+                document.getElementById("tag1").value,
+                document.getElementById("tag2").value,
+                document.getElementById("tag3").value
+            ].filter(t => t.trim() !== "");
 
-            const escala = Math.max(w / img.width, h / img.height);
-            const nw = img.width * escala;
-            const nh = img.height * escala;
-            ctx.drawImage(img, x + (w - nw) / 2, y + (h - nh) / 2, nw, nh);
-            ctx.restore();
-        }
+            let curX = x;
+            let curY = y;
+            ctx.font = "700 24px 'Segoe UI', sans-serif";
 
-        function textoMultilinea(texto, x, y, maxAncho, altoLinea) {
-            const palabras = texto.split(" ");
-            let linea = "";
-            let posY = y;
-            for (let n = 0; n < palabras.length; n++) {
-                const prueba = linea + palabras[n] + " ";
-                if (ctx.measureText(prueba).width > maxAncho && n > 0) {
-                    ctx.fillText(linea.trim(), x, posY);
-                    linea = palabras[n] + " ";
-                    posY += altoLinea;
-                } else {
-                    linea = prueba;
+            tags.forEach(tag => {
+                const tw = ctx.measureText(tag).width + 44;
+                if (curX + tw > x + anchoMax) {
+                    curX = x;
+                    curY += 62;
                 }
-            }
-            ctx.fillText(linea.trim(), x, posY);
-            return posY;
+                ctx.fillStyle = fondoPill;
+                ctx.beginPath();
+                ctx.roundRect(curX, curY, tw, 48, 24);
+                ctx.fill();
+
+                ctx.fillStyle = colorTexto;
+                ctx.fillText(tag, curX + 22, curY + 32);
+                curX += tw + 14;
+            });
+            return curY + 55;
         }
 
-        function dibujarPlaceholderFoto(x, y, w, h, radio, esClaro) {
-            ctx.fillStyle = esClaro ? "#cbd5e1" : "#1e232e";
+        function dibujarPieAsesor(x, y, w, contacto, oscuro = true) {
+            ctx.fillStyle = oscuro ? "rgba(255,255,255,0.07)" : "#0f172a";
             ctx.beginPath();
-            ctx.roundRect(x, y, w, h, radio);
+            ctx.roundRect(x, y, w, 126, 22);
             ctx.fill();
-            ctx.strokeStyle = colorActivo;
-            ctx.lineWidth = 6;
-            ctx.stroke();
 
-            ctx.fillStyle = esClaro ? "#334155" : "#94a3b8";
-            ctx.font = "700 32px 'Segoe UI', sans-serif";
-            ctx.textAlign = "center";
-            ctx.fillText("📷 Sube aquí la foto del vehículo", x + w / 2, y + h / 2);
-            ctx.textAlign = "left";
+            ctx.fillStyle = "#94a3b8";
+            ctx.font = "700 22px 'Segoe UI', sans-serif";
+            ctx.fillText("GUAYANAUTO, C.A. • CIUDAD GUAYANA", x + 32, y + 48);
+
+            ctx.fillStyle = "#ffd100";
+            ctx.font = "800 32px 'Segoe UI', sans-serif";
+            ctx.fillText(contacto, x + 32, y + 94);
         }
 
-        function dibujarTarjeta() {
+        // --- MOTOR DE 8 ARQUITECTURAS ---
+        function dibujar() {
             const W = 1080, H = 1920;
-            const modelo = CATALOGO_FIAT[selModelo.value].nombre;
-            const ventaja = document.getElementById("inputVentaja").value;
+            const mod = MODELOS_FIAT[selModelo.value];
             const badge = document.getElementById("inputBadge").value;
             const precio = document.getElementById("inputPrecio").value;
             const subprecio = document.getElementById("inputSubprecio").value;
-            const cta = document.getElementById("inputCTA").value;
             const contacto = document.getElementById("inputContacto").value;
             const esAmarillo = colorActivo === "#ffd100";
-            const textoSobreAcento = esAmarillo ? "#111318" : "#ffffff";
+            const txtSobreColor = esAmarillo ? "#111318" : "#ffffff";
 
             ctx.clearRect(0, 0, W, H);
 
-            // --- PLANTILLA 06 (Índice 5): FOTO FULL-BLEED PANTALLA COMPLETA ---
-            if (plantillaActiva === 5) {
-                if (imagenVehiculo) {
-                    dibujarImagenAjustada(imagenVehiculo, 0, 0, W, H, 0);
-                } else {
-                    ctx.fillStyle = "#181c24";
-                    ctx.fillRect(0, 0, W, H);
-                    ctx.fillStyle = "#94a3b8";
-                    ctx.font = "700 36px 'Segoe UI', sans-serif";
-                    ctx.textAlign = "center";
-                    ctx.fillText("📷 Sube una foto vertical para modo Pantalla Completa", W / 2, H * 0.42);
-                    ctx.textAlign = "left";
-                }
-                const ovTop = ctx.createLinearGradient(0, 0, 0, 400);
-                ovTop.addColorStop(0, "rgba(10,12,16,0.92)");
-                ovTop.addColorStop(1, "rgba(10,12,16,0)");
-                ctx.fillStyle = ovTop;
-                ctx.fillRect(0, 0, W, 400);
+            // =================================================================
+            // 01. SHOWROOM NOCTURNO (Luz de estudio + reflejo + cinta lateral)
+            // =================================================================
+            if (estiloActivo === 0) {
+                ctx.fillStyle = "#090b0f";
+                ctx.fillRect(0, 0, W, H);
 
-                const ovBot = ctx.createLinearGradient(0, 760, 0, H);
-                ovBot.addColorStop(0, "rgba(10,12,16,0)");
-                ovBot.addColorStop(0.35, "rgba(10,12,16,0.9)");
-                ovBot.addColorStop(1, "rgba(10,12,16,0.99)");
-                ctx.fillStyle = ovBot;
-                ctx.fillRect(0, 760, W, H - 760);
+                // Spotlight radial superior
+                const spot = ctx.createRadialGradient(W / 2, 520, 40, W / 2, 520, 680);
+                spot.addColorStop(0, colorActivo);
+                spot.addColorStop(1, "rgba(9,11,15,0)");
+                ctx.save();
+                ctx.globalAlpha = 0.38;
+                ctx.fillStyle = spot;
+                ctx.fillRect(0, 0, W, 1200);
+                ctx.restore();
 
-                dibujarLogoFiatFlag(80, 80, 1.15);
-                ctx.fillStyle = "#ffffff";
-                ctx.font = "800 36px 'Segoe UI', sans-serif";
-                ctx.fillText("GUAYANAUTO, C.A.", 225, 118);
-                ctx.fillStyle = "#cbd5e1";
-                ctx.font = "600 23px 'Segoe UI', sans-serif";
-                ctx.fillText("CONCESIONARIO OFICIAL FIAT", 225, 152);
+                // Suelo de showroom
+                const suelo = ctx.createLinearGradient(0, 960, 0, H);
+                suelo.addColorStop(0, "#141821");
+                suelo.addColorStop(1, "#07080b");
+                ctx.fillStyle = suelo;
+                ctx.fillRect(0, 960, W, H - 960);
 
-                if (badge.trim()) {
+                dibujarMarcaFiat(75, 75, "#ffffff", 1.1);
+                if (badge) {
                     ctx.fillStyle = colorActivo;
                     ctx.beginPath();
-                    ctx.roundRect(80, 990, 560, 58, 12);
+                    ctx.roundRect(W - 490, 78, 415, 50, 25);
                     ctx.fill();
-                    ctx.fillStyle = textoSobreAcento;
-                    ctx.font = "800 26px 'Segoe UI', sans-serif";
-                    ctx.fillText(badge.toUpperCase(), 108, 1028);
+                    ctx.fillStyle = txtSobreColor;
+                    ctx.font = "800 22px 'Segoe UI', sans-serif";
+                    ctx.textAlign = "center";
+                    ctx.fillText(badge.toUpperCase(), W - 282, 111);
+                    ctx.textAlign = "left";
                 }
 
-                ctx.fillStyle = "#ffffff";
-                ctx.font = "900 70px 'Segoe UI', sans-serif";
-                ctx.fillText(modelo, 80, 1135);
-
-                ctx.fillStyle = "#e2e8f0";
-                ctx.font = "600 32px 'Segoe UI', sans-serif";
-                textoMultilinea(ventaja, 80, 1188, 920, 42);
-
-                ctx.fillStyle = colorActivo;
+                // Foto panorámica con borde luminoso sutil
+                dibujarFoto(65, 190, 950, 740, 28);
+                ctx.strokeStyle = "rgba(255,255,255,0.15)";
+                ctx.lineWidth = 3;
                 ctx.beginPath();
-                ctx.roundRect(80, 1300, 920, 240, 26);
-                ctx.fill();
-                ctx.fillStyle = textoSobreAcento;
-                ctx.font = "900 72px 'Segoe UI', sans-serif";
-                ctx.fillText(precio, 120, 1410);
-                ctx.font = "700 35px 'Segoe UI', sans-serif";
-                ctx.fillText(subprecio, 120, 1480);
+                ctx.roundRect(65, 190, 950, 740, 28);
+                ctx.stroke();
 
-                ctx.fillStyle = "#ffffff";
-                ctx.font = "800 32px 'Segoe UI', sans-serif";
-                ctx.fillText(cta + "  |  " + contacto, 80, 1630);
-                return;
-            }
-
-            // --- PLANTILLA 15 (Índice 14): PANTALLA DIVIDIDA 50/50 (SPLIT) ---
-            if (plantillaActiva === 14) {
-                if (imagenVehiculo) {
-                    dibujarImagenAjustada(imagenVehiculo, 0, 0, W, 940, 0);
-                } else {
-                    dibujarPlaceholderFoto(0, 0, W, 940, 0, false);
-                }
-
-                // Banda superior semitransparente para logo
-                ctx.fillStyle = "rgba(15,17,23,0.78)";
-                ctx.fillRect(0, 0, W, 175);
-                dibujarLogoFiatFlag(70, 60, 1.05);
-                ctx.fillStyle = "#ffffff";
-                ctx.font = "800 34px 'Segoe UI', sans-serif";
-                ctx.fillText("GUAYANAUTO, C.A. • FIAT", 205, 95);
-                ctx.fillStyle = "#ffd100";
-                ctx.font = "700 22px 'Segoe UI', sans-serif";
-                ctx.fillText(badge.toUpperCase(), 205, 130);
-
-                // Mitad inferior sólida en color vibrante
+                // Subtítulo versión y Título Gigante
                 ctx.fillStyle = colorActivo;
-                ctx.fillRect(0, 940, W, H - 940);
+                ctx.font = "800 28px 'Segoe UI', sans-serif";
+                ctx.fillText(`FIAT ${mod.sub}`, 75, 1015);
 
-                ctx.fillStyle = textoSobreAcento;
-                ctx.font = "900 68px 'Segoe UI', sans-serif";
-                ctx.fillText(modelo, 80, 1060);
-
-                ctx.font = "600 34px 'Segoe UI', sans-serif";
-                textoMultilinea(ventaja, 80, 1118, 920, 44);
-
-                // Caja oscura de alto impacto para precio
-                ctx.fillStyle = "#101218";
-                ctx.beginPath();
-                ctx.roundRect(80, 1245, 920, 270, 28);
-                ctx.fill();
-
-                ctx.fillStyle = "#ffd100";
+                ctx.fillStyle = "#ffffff";
                 ctx.font = "900 76px 'Segoe UI', sans-serif";
-                ctx.fillText(precio, 125, 1365);
-                ctx.fillStyle = "#ffffff";
-                ctx.font = "600 36px 'Segoe UI', sans-serif";
-                ctx.fillText(subprecio, 125, 1440);
+                ctx.fillText(mod.nombre, 75, 1095);
 
-                ctx.fillStyle = textoSobreAcento;
-                ctx.font = "800 34px 'Segoe UI', sans-serif";
-                ctx.fillText(cta, 80, 1605);
-                ctx.font = "700 30px 'Segoe UI', sans-serif";
-                ctx.fillText(contacto, 80, 1655);
-                return;
+                dibujarPildorasSpecs(75, 1135, 930, "rgba(255,255,255,0.09)", "#e2e8f0");
+
+                // Bloque de oferta con barra de acento
+                ctx.fillStyle = "#151922";
+                ctx.beginPath();
+                ctx.roundRect(75, 1320, 930, 260, 26);
+                ctx.fill();
+                ctx.fillStyle = colorActivo;
+                ctx.fillRect(75, 1350, 14, 200);
+
+                ctx.fillStyle = "#ffffff";
+                ctx.font = "900 76px 'Segoe UI', sans-serif";
+                ctx.fillText(precio, 125, 1445);
+                ctx.fillStyle = "#94a3b8";
+                ctx.font = "600 34px 'Segoe UI', sans-serif";
+                ctx.fillText(subprecio, 125, 1515);
+
+                dibujarPieAsesor(75, 1635, 930, contacto, true);
             }
 
-            // --- PLANTILLA 16 (Índice 15): ENTREGA REAL / MARCO POLAROID URBANO ---
-            if (plantillaActiva === 15) {
-                ctx.fillStyle = "#12141c";
+            // =================================================================
+            // 02. PORTADA DE REVISTA AUTOMOTRIZ (Titular gigante detrás/arriba)
+            // =================================================================
+            else if (estiloActivo === 1) {
+                ctx.fillStyle = "#f4f5f7";
                 ctx.fillRect(0, 0, W, H);
-                dibujarTexturaFondo(W, H, false);
 
-                dibujarLogoFiatFlag(80, 80, 1.1);
-                ctx.fillStyle = "#ffffff";
-                ctx.font = "800 36px 'Segoe UI', sans-serif";
-                ctx.fillText("GUAYANAUTO, C.A.", 220, 118);
-                ctx.fillStyle = colorActivo;
+                // Cabecera editorial
+                dibujarMarcaFiat(70, 65, "#0f172a", 1.05);
+                ctx.fillStyle = "#0f172a";
                 ctx.font = "800 24px 'Segoe UI', sans-serif";
-                ctx.fillText(badge.toUpperCase(), 220, 152);
-
-                // Marco blanco tipo Polaroid ligeramente inclinado
-                ctx.save();
-                ctx.translate(W / 2, 740);
-                ctx.rotate(-0.025);
-                ctx.fillStyle = "#ffffff";
-                ctx.shadowColor = "rgba(0,0,0,0.6)";
-                ctx.shadowBlur = 35;
-                ctx.beginPath();
-                ctx.roundRect(-450, -480, 900, 960, 24);
-                ctx.fill();
-                ctx.shadowBlur = 0;
-
-                if (imagenVehiculo) {
-                    dibujarImagenAjustada(imagenVehiculo, -415, -445, 830, 740, 14);
-                } else {
-                    dibujarPlaceholderFoto(-415, -445, 830, 740, 14, true);
-                }
-
-                ctx.fillStyle = "#0f172a";
-                ctx.font = "900 46px 'Segoe UI', sans-serif";
-                ctx.fillText(modelo, -410, 365);
-                ctx.fillStyle = "#475569";
-                ctx.font = "700 28px 'Segoe UI', sans-serif";
-                ctx.fillText(ventaja.slice(0, 52), -410, 415);
-                ctx.restore();
-
-                // Bloque de oferta abajo
-                ctx.fillStyle = colorActivo;
-                ctx.beginPath();
-                ctx.roundRect(80, 1290, 920, 260, 28);
-                ctx.fill();
-
-                ctx.fillStyle = textoSobreAcento;
-                ctx.font = "900 74px 'Segoe UI', sans-serif";
-                ctx.fillText(precio, 120, 1405);
-                ctx.font = "700 36px 'Segoe UI', sans-serif";
-                ctx.fillText(subprecio, 120, 1475);
-
-                ctx.fillStyle = "#ffffff";
-                ctx.font = "800 34px 'Segoe UI', sans-serif";
-                ctx.fillText(cta, 80, 1625);
-                ctx.fillStyle = "#ffd100";
-                ctx.font = "700 32px 'Segoe UI', sans-serif";
-                ctx.fillText(contacto, 80, 1675);
-                return;
-            }
-
-            // --- FONDOS PARA LAS DEMÁS 17 PLANTILLAS ---
-            const esFondoClaro = plantillaActiva === 2 || plantillaActiva === 18;
-            const grad = ctx.createLinearGradient(0, 0, W, H);
-            if (esFondoClaro) {
-                grad.addColorStop(0, "#f8fafc");
-                grad.addColorStop(1, "#e2e8f0");
-            } else if (plantillaActiva === 4) {
-                grad.addColorStop(0, colorActivo);
-                grad.addColorStop(0.55, "#141720");
-                grad.addColorStop(1, "#0b0d12");
-            } else if (plantillaActiva === 17) {
-                // Atardecer Guayana
-                grad.addColorStop(0, "#ffd100");
-                grad.addColorStop(0.35, "#e6007e");
-                grad.addColorStop(0.85, "#12131a");
-                grad.addColorStop(1, "#0b0c10");
-            } else if (plantillaActiva === 16) {
-                // Sport Carbono
-                grad.addColorStop(0, "#0a0b0e");
-                grad.addColorStop(1, "#161920");
-            } else {
-                grad.addColorStop(0, "#0f1117");
-                grad.addColorStop(1, "#191d26");
-            }
-            ctx.fillStyle = grad;
-            ctx.fillRect(0, 0, W, H);
-
-            // Forzar textura carbono en plantilla 17 (índice 16)
-            if (plantillaActiva === 16) {
-                const prevTex = texturaActiva;
-                texturaActiva = 4;
-                dibujarTexturaFondo(W, H, false);
-                texturaActiva = prevTex;
-            } else {
-                dibujarTexturaFondo(W, H, esFondoClaro);
-            }
-
-            // Efecto Neón Radial (Plantilla 02)
-            if (plantillaActiva === 1) {
-                const rad = ctx.createRadialGradient(W / 2, 680, 60, W / 2, 680, 620);
-                rad.addColorStop(0, colorActivo);
-                rad.addColorStop(1, "rgba(15,17,23,0)");
-                ctx.save();
-                ctx.globalAlpha = 0.48;
-                ctx.fillStyle = rad;
-                ctx.fillRect(0, 0, W, H);
-                ctx.restore();
-            }
-
-            // Showroom VIP Reflector Superior (Plantilla 13 / índice 12)
-            if (plantillaActiva === 12) {
-                ctx.save();
-                const luz = ctx.createLinearGradient(W / 2, 0, W / 2, 1050);
-                luz.addColorStop(0, colorActivo);
-                luz.addColorStop(1, "rgba(15,17,23,0)");
-                ctx.globalAlpha = 0.38;
-                ctx.fillStyle = luz;
-                ctx.beginPath();
-                ctx.moveTo(280, 0);
-                ctx.lineTo(800, 0);
-                ctx.lineTo(1060, 1050);
-                ctx.lineTo(20, 1050);
-                ctx.closePath();
-                ctx.fill();
-                ctx.restore();
-            }
-
-            // Corte Diagonal (Plantilla 09)
-            if (plantillaActiva === 8) {
-                ctx.save();
-                ctx.fillStyle = colorActivo;
-                ctx.beginPath();
-                ctx.moveTo(0, 520);
-                ctx.lineTo(W, 340);
-                ctx.lineTo(W, 1120);
-                ctx.lineTo(0, 1300);
-                ctx.closePath();
-                ctx.fill();
-                ctx.restore();
-            }
-
-            // Cinta Lateral Fiat Flag (Plantilla 10)
-            const margenIzq = plantillaActiva === 9 ? 130 : 80;
-            const anchoContenido = W - margenIzq - 80;
-            if (plantillaActiva === 9) {
-                PALETA_MERCOSUR.forEach((col, i) => {
-                    ctx.fillStyle = col;
-                    ctx.fillRect(i * 18, 0, 18, H);
-                });
-            }
-
-            // Marca de Agua Gigante (Plantilla 07)
-            if (plantillaActiva === 6) {
-                ctx.save();
-                ctx.globalAlpha = 0.08;
-                ctx.fillStyle = colorActivo;
-                ctx.font = "900 175px 'Segoe UI', sans-serif";
-                ctx.fillText(modelo.replace("FIAT ", ""), 60, 440);
-                ctx.fillText("GUAYANAUTO", 60, 1240);
-                ctx.restore();
-            }
-
-            const colorTextoPrincipal = esFondoClaro ? "#0f172a" : "#ffffff";
-            const colorTextoSecundario = esFondoClaro ? "#334155" : "#cbd5e1";
-
-            // Cabecera
-            dibujarLogoFiatFlag(margenIzq, 80, 1.1);
-            ctx.fillStyle = plantillaActiva === 17 ? "#111318" : colorTextoPrincipal;
-            ctx.font = "800 35px 'Segoe UI', sans-serif";
-            ctx.fillText("GUAYANAUTO, C.A.", margenIzq + 140, 115);
-            ctx.fillStyle = plantillaActiva === 17 ? "#1e293b" : colorTextoSecundario;
-            ctx.font = "600 22px 'Segoe UI', sans-serif";
-            ctx.fillText("CONCESIONARIO OFICIAL FIAT • CIUDAD GUAYANA", margenIzq + 140, 147);
-
-            // Etiqueta superior
-            if (badge.trim()) {
-                ctx.fillStyle = (plantillaActiva === 4 || plantillaActiva === 17) ? "#111318" : colorActivo;
-                ctx.beginPath();
-                ctx.roundRect(margenIzq, 198, Math.min(580, anchoContenido), 56, 12);
-                ctx.fill();
-
-                ctx.fillStyle = (plantillaActiva === 4 || plantillaActiva === 17) ? "#ffffff" : textoSobreAcento;
-                ctx.font = "800 25px 'Segoe UI', sans-serif";
-                ctx.fillText(badge.toUpperCase(), margenIzq + 24, 235);
-            }
-
-            const titularArriba = plantillaActiva === 3 || plantillaActiva === 6;
-            const fotoY = titularArriba ? 485 : 295;
-            const fotoH = plantillaActiva === 10 ? 580 : 645;
-            const textoY = titularArriba ? 345 : (fotoY + fotoH + 85);
-
-            // Foto del Vehículo
-            if (imagenVehiculo) {
-                dibujarImagenAjustada(imagenVehiculo, margenIzq, fotoY, anchoContenido, fotoH, plantillaActiva === 10 ? 12 : 30);
-                if (plantillaActiva !== 10) {
-                    ctx.strokeStyle = plantillaActiva === 11 ? "#ffd100" : colorActivo;
-                    ctx.lineWidth = plantillaActiva === 11 ? 12 : 7;
-                    ctx.beginPath();
-                    ctx.roundRect(margenIzq, fotoY, anchoContenido, fotoH, 30);
-                    ctx.stroke();
-                }
-            } else {
-                dibujarPlaceholderFoto(margenIzq, fotoY, anchoContenido, fotoH, 30, esFondoClaro);
-            }
-
-            // Sello circular de Oportunidad (Plantilla 14 / índice 13)
-            if (plantillaActiva === 13) {
-                ctx.save();
-                ctx.translate(W - 195, fotoY + 55);
-                ctx.rotate(0.18);
-                ctx.fillStyle = "#ffd100";
-                ctx.beginPath();
-                ctx.arc(0, 0, 118, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.strokeStyle = "#111318";
-                ctx.lineWidth = 6;
-                ctx.stroke();
-
-                ctx.fillStyle = "#111318";
-                ctx.font = "900 32px 'Segoe UI', sans-serif";
-                ctx.textAlign = "center";
-                ctx.fillText("OFERTA", 0, -8);
-                ctx.font = "900 36px 'Segoe UI', sans-serif";
-                ctx.fillText("0 KM", 0, 32);
-                ctx.restore();
-            }
-
-            // Nombre del Modelo y Ventaja
-            ctx.fillStyle = colorTextoPrincipal;
-            ctx.font = plantillaActiva === 10 ? "700 60px 'Segoe UI', sans-serif" : "900 62px 'Segoe UI', sans-serif";
-            ctx.fillText(modelo, margenIzq, textoY);
-
-            ctx.fillStyle = colorTextoSecundario;
-            ctx.font = "600 31px 'Segoe UI', sans-serif";
-            textoMultilinea(ventaja, margenIzq, textoY + 48, anchoContenido, 40);
-
-            // Bloque de Precio / Oferta
-            const cardY = 1230;
-            if (plantillaActiva === 7) {
-                // Tarjeta Glass
-                ctx.fillStyle = "rgba(255, 255, 255, 0.08)";
-                ctx.beginPath();
-                ctx.roundRect(margenIzq, cardY, anchoContenido, 260, 28);
-                ctx.fill();
-                ctx.strokeStyle = colorActivo;
-                ctx.lineWidth = 5;
-                ctx.stroke();
-
-                ctx.fillStyle = colorActivo;
-                ctx.font = "900 72px 'Segoe UI', sans-serif";
-                ctx.fillText(precio, margenIzq + 40, cardY + 115);
-                ctx.fillStyle = "#ffffff";
-                ctx.font = "600 35px 'Segoe UI', sans-serif";
-                ctx.fillText(subprecio, margenIzq + 40, cardY + 185);
-            } else if (plantillaActiva === 10) {
-                // Minimalista
-                ctx.fillStyle = colorActivo;
-                ctx.fillRect(margenIzq, cardY + 15, 14, 210);
-
-                ctx.fillStyle = colorTextoPrincipal;
-                ctx.font = "900 74px 'Segoe UI', sans-serif";
-                ctx.fillText(precio, margenIzq + 44, cardY + 105);
-                ctx.fillStyle = colorTextoSecundario;
-                ctx.font = "600 35px 'Segoe UI', sans-serif";
-                ctx.fillText(subprecio, margenIzq + 44, cardY + 175);
-            } else if (plantillaActiva === 18) {
-                // Ficha Técnica de Concesionario (Plantilla 19)
-                ctx.fillStyle = "#ffffff";
-                ctx.beginPath();
-                ctx.roundRect(margenIzq, cardY, anchoContenido, 265, 24);
-                ctx.fill();
-                ctx.strokeStyle = "#cbd5e1";
-                ctx.lineWidth = 4;
-                ctx.stroke();
-
-                ctx.fillStyle = colorActivo;
-                ctx.fillRect(margenIzq, cardY, 24, 265);
-
-                ctx.fillStyle = "#0f172a";
-                ctx.font = "900 68px 'Segoe UI', sans-serif";
-                ctx.fillText(precio, margenIzq + 55, cardY + 112);
-                ctx.fillStyle = "#334155";
-                ctx.font = "700 34px 'Segoe UI', sans-serif";
-                ctx.fillText("✓ " + subprecio, margenIzq + 55, cardY + 182);
-            } else {
-                // Bloque sólido de color
-                ctx.fillStyle = colorActivo;
-                ctx.beginPath();
-                ctx.roundRect(margenIzq, cardY, anchoContenido, 260, 28);
-                ctx.fill();
-
-                if (plantillaActiva === 11) {
-                    ctx.strokeStyle = textoSobreAcento;
-                    ctx.lineWidth = 4;
-                    ctx.beginPath();
-                    ctx.roundRect(margenIzq + 16, cardY + 16, anchoContenido - 32, 228, 20);
-                    ctx.stroke();
-                }
-
-                ctx.fillStyle = textoSobreAcento;
-                ctx.font = "900 72px 'Segoe UI', sans-serif";
-                ctx.fillText(precio, margenIzq + 40, cardY + 115);
-                ctx.font = "700 35px 'Segoe UI', sans-serif";
-                ctx.fillText(subprecio, margenIzq + 40, cardY + 185);
-            }
-
-            // Pie de página / Llamado a la acción (CTA)
-            if (plantillaActiva === 19) {
-                // Botón CTA estilo WhatsApp directo (Plantilla 20)
-                ctx.fillStyle = "#009e49";
-                ctx.beginPath();
-                ctx.roundRect(margenIzq, 1535, anchoContenido, 105, 52);
-                ctx.fill();
-
-                ctx.fillStyle = "#ffffff";
-                ctx.font = "900 36px 'Segoe UI', sans-serif";
-                ctx.textAlign = "center";
-                ctx.fillText(cta, margenIzq + anchoContenido / 2, 1600);
+                ctx.textAlign = "right";
+                ctx.fillText("EDICIÓN VENEZUELA • 0 KM", W - 70, 108);
                 ctx.textAlign = "left";
 
                 ctx.fillStyle = "#cbd5e1";
-                ctx.font = "700 30px 'Segoe UI', sans-serif";
-                ctx.fillText("Guayanauto, C.A.  •  " + contacto, margenIzq + 15, 1705);
-            } else {
-                ctx.fillStyle = esFondoClaro ? "#0f172a" : "#1c212c";
+                ctx.fillRect(70, 140, W - 140, 3);
+
+                // Titular gigante estilo revista
+                ctx.fillStyle = colorActivo === "#ffd100" ? "#0f172a" : colorActivo;
+                ctx.font = "900 94px 'Arial Black', 'Segoe UI', sans-serif";
+                const palabras = mod.nombre.split(" ");
+                ctx.fillText(palabras[0], 68, 255);
+                if (palabras[1]) {
+                    ctx.fillStyle = "#0f172a";
+                    ctx.fillText(palabras.slice(1).join(" "), 68, 350);
+                }
+
+                // Foto editorial sin esquinas redondeadas (sangrado lateral)
+                const fotoTop = palabras[1] ? 390 : 300;
+                dibujarFoto(0, fotoTop, W, 760, 0);
+
+                // Etiqueta flotante montada sobre la esquina de la foto
+                if (badge) {
+                    ctx.fillStyle = colorActivo;
+                    ctx.fillRect(70, fotoTop + 725, 520, 64);
+                    ctx.fillStyle = txtSobreColor;
+                    ctx.font = "800 26px 'Segoe UI', sans-serif";
+                    ctx.fillText(badge.toUpperCase(), 98, fotoTop + 766);
+                }
+
+                // Specs limpias
+                dibujarPildorasSpecs(70, fotoTop + 820, 940, "#e2e8f0", "#0f172a");
+
+                // Precio tipográfico limpio
+                ctx.fillStyle = "#0f172a";
+                ctx.font = "900 82px 'Segoe UI', sans-serif";
+                ctx.fillText(precio, 70, 1510);
+
+                ctx.fillStyle = "#475569";
+                ctx.font = "600 34px 'Segoe UI', sans-serif";
+                ctx.fillText(subprecio, 70, 1570);
+
+                dibujarPieAsesor(70, 1640, 940, contacto, false);
+            }
+
+            // =================================================================
+            // 03. IMPACTO VIBRANTE FIAT BRASIL (Fondo de color puro + tarjeta blanca)
+            // =================================================================
+            else if (estiloActivo === 2) {
+                ctx.fillStyle = colorActivo;
+                ctx.fillRect(0, 0, W, H);
+
+                // Formas geométricas dinámicas en blanco translúcido
+                ctx.save();
+                ctx.globalAlpha = 0.14;
+                ctx.fillStyle = esAmarillo ? "#000000" : "#ffffff";
                 ctx.beginPath();
-                ctx.roundRect(margenIzq, 1545, anchoContenido, 165, 22);
+                ctx.moveTo(W, 0);
+                ctx.lineTo(W, 900);
+                ctx.lineTo(250, 0);
+                ctx.closePath();
+                ctx.fill();
+                ctx.restore();
+
+                dibujarMarcaFiat(75, 75, txtSobreColor, 1.15);
+
+                // Tarjeta blanca principal
+                ctx.fillStyle = "#ffffff";
+                ctx.beginPath();
+                ctx.roundRect(65, 185, 950, 1420, 36);
                 ctx.fill();
 
-                dibujarLogoFiatFlag(margenIzq + 34, 1598, 0.92);
-                ctx.fillStyle = "#ffffff";
-                ctx.font = "800 31px 'Segoe UI', sans-serif";
-                ctx.fillText(cta, margenIzq + 160, 1620);
+                dibujarFoto(95, 215, 890, 690, 24);
+
+                ctx.fillStyle = colorActivo === "#ffd100" ? "#b45309" : colorActivo;
+                ctx.font = "800 26px 'Segoe UI', sans-serif";
+                ctx.fillText(badge.toUpperCase(), 105, 970);
+
+                ctx.fillStyle = "#0f172a";
+                ctx.font = "900 72px 'Segoe UI', sans-serif";
+                ctx.fillText(`FIAT ${mod.nombre}`, 105, 1050);
+
+                dibujarPildorasSpecs(105, 1085, 870, "#f1f5f9", "#334155");
+
+                // Caja oscura de oferta dentro de la tarjeta blanca
+                ctx.fillStyle = "#0f172a";
+                ctx.beginPath();
+                ctx.roundRect(105, 1280, 870, 280, 24);
+                ctx.fill();
+
                 ctx.fillStyle = "#ffd100";
-                ctx.font = "700 29px 'Segoe UI', sans-serif";
-                ctx.fillText(contacto, margenIzq + 160, 1666);
+                ctx.font = "900 74px 'Segoe UI', sans-serif";
+                ctx.fillText(precio, 145, 1405);
+
+                ctx.fillStyle = "#f8fafc";
+                ctx.font = "600 34px 'Segoe UI', sans-serif";
+                ctx.fillText(subprecio, 145, 1475);
+
+                // Contacto abajo sobre el color vibrante
+                ctx.fillStyle = txtSobreColor;
+                ctx.font = "800 34px 'Segoe UI', sans-serif";
+                ctx.fillText(`GUAYANAUTO, C.A. • ${contacto}`, 75, 1715);
+            }
+
+            // =================================================================
+            // 04. CINE FULL-BLEED (Foto ocupando el 100% de la pantalla)
+            // =================================================================
+            else if (estiloActivo === 3) {
+                dibujarFoto(0, 0, W, H, 0);
+
+                // Degradado oscuro superior e inferior
+                const topG = ctx.createLinearGradient(0, 0, 0, 350);
+                topG.addColorStop(0, "rgba(0,0,0,0.85)");
+                topG.addColorStop(1, "rgba(0,0,0,0)");
+                ctx.fillStyle = topG;
+                ctx.fillRect(0, 0, W, 350);
+
+                const botG = ctx.createLinearGradient(0, 750, 0, H);
+                botG.addColorStop(0, "rgba(0,0,0,0)");
+                botG.addColorStop(0.4, "rgba(10,12,16,0.9)");
+                botG.addColorStop(1, "rgba(10,12,16,0.99)");
+                ctx.fillStyle = botG;
+                ctx.fillRect(0, 750, W, H - 750);
+
+                dibujarMarcaFiat(75, 75, "#ffffff", 1.15);
+
+                if (badge) {
+                    ctx.fillStyle = colorActivo;
+                    ctx.beginPath();
+                    ctx.roundRect(75, 980, 520, 54, 10);
+                    ctx.fill();
+                    ctx.fillStyle = txtSobreColor;
+                    ctx.font = "800 25px 'Segoe UI', sans-serif";
+                    ctx.fillText(badge.toUpperCase(), 100, 1016);
+                }
+
+                ctx.fillStyle = "#ffffff";
+                ctx.font = "900 82px 'Segoe UI', sans-serif";
+                ctx.fillText(mod.nombre, 75, 1125);
+
+                dibujarPildorasSpecs(75, 1165, 930, "rgba(255,255,255,0.16)", "#ffffff");
+
+                // Línea divisoria con los 4 colores Fiat
+                FLAG_COLORS.forEach((c, idx) => {
+                    ctx.fillStyle = c;
+                    ctx.fillRect(75 + idx * 232, 1345, 224, 8);
+                });
+
+                ctx.fillStyle = "#ffd100";
+                ctx.font = "900 80px 'Segoe UI', sans-serif";
+                ctx.fillText(precio, 75, 1455);
+
+                ctx.fillStyle = "#e2e8f0";
+                ctx.font = "600 36px 'Segoe UI', sans-serif";
+                ctx.fillText(subprecio, 75, 1520);
+
+                dibujarPieAsesor(75, 1615, 930, contacto, true);
+            }
+
+            // =================================================================
+            // 05. GALERÍA URBANA & PATRÓN FIAT FLAG (Marca de agua repetida)
+            // =================================================================
+            else if (estiloActivo === 4) {
+                ctx.fillStyle = "#12151c";
+                ctx.fillRect(0, 0, W, H);
+
+                // Patrón diagonal repetido con el nombre del modelo
+                ctx.save();
+                ctx.translate(W / 2, H / 2);
+                ctx.rotate(-0.22);
+                ctx.fillStyle = "rgba(255,255,255,0.03)";
+                ctx.font = "900 95px 'Arial Black', sans-serif";
+                for (let y = -1100; y < 1100; y += 140) {
+                    ctx.fillText(`${mod.nombre} • FIAT • ${mod.nombre}`, -900, y);
+                }
+                ctx.restore();
+
+                dibujarMarcaFiat(75, 75, "#ffffff", 1.1);
+
+                // Marco estilo Polaroid moderna inclinada levemente
+                ctx.save();
+                ctx.translate(W / 2, 620);
+                ctx.rotate(-0.025);
+                ctx.fillStyle = "#ffffff";
+                ctx.beginPath();
+                ctx.roundRect(-460, -400, 920, 820, 24);
+                ctx.fill();
+                dibujarFoto(-435, -375, 870, 680, 16);
+
+                ctx.fillStyle = "#0f172a";
+                ctx.font = "900 44px 'Segoe UI', sans-serif";
+                ctx.fillText(`FIAT ${mod.nombre}`, -430, 375);
+                ctx.restore();
+
+                dibujarPildorasSpecs(75, 1110, 930, colorActivo, txtSobreColor);
+
+                ctx.fillStyle = "#ffffff";
+                ctx.font = "900 82px 'Segoe UI', sans-serif";
+                ctx.fillText(precio, 75, 1380);
+
+                ctx.fillStyle = "#94a3b8";
+                ctx.font = "600 36px 'Segoe UI', sans-serif";
+                ctx.fillText(subprecio, 75, 1445);
+
+                dibujarPieAsesor(75, 1580, 930, contacto, true);
+            }
+
+            // =================================================================
+            // 06. CORTE DIAGONAL DINÁMICO (Dos mundos divididos a 25°)
+            // =================================================================
+            else if (estiloActivo === 5) {
+                ctx.fillStyle = "#0e1015";
+                ctx.fillRect(0, 0, W, H);
+
+                // Mitad superior en color vibrante
+                ctx.fillStyle = colorActivo;
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.lineTo(W, 0);
+                ctx.lineTo(W, 640);
+                ctx.lineTo(0, 890);
+                ctx.closePath();
+                ctx.fill();
+
+                dibujarMarcaFiat(75, 75, txtSobreColor, 1.15);
+
+                ctx.fillStyle = txtSobreColor;
+                ctx.font = "900 76px 'Segoe UI', sans-serif";
+                ctx.fillText(mod.nombre, 75, 250);
+
+                // Foto flotante con sombra profunda cruzando la diagonal
+                ctx.save();
+                ctx.shadowColor = "rgba(0,0,0,0.65)";
+                ctx.shadowBlur = 40;
+                ctx.shadowOffsetY = 20;
+                dibujarFoto(75, 310, 930, 680, 28);
+                ctx.restore();
+
+                dibujarPildorasSpecs(75, 1055, 930, "rgba(255,255,255,0.1)", "#ffffff");
+
+                // Tarjeta de precio con borde de color
+                ctx.fillStyle = "#171b24";
+                ctx.beginPath();
+                ctx.roundRect(75, 1250, 930, 280, 26);
+                ctx.fill();
+                ctx.strokeStyle = colorActivo;
+                ctx.lineWidth = 6;
+                ctx.stroke();
+
+                ctx.fillStyle = colorActivo === "#0055a5" ? "#60a5fa" : colorActivo;
+                ctx.font = "900 78px 'Segoe UI', sans-serif";
+                ctx.fillText(precio, 115, 1375);
+
+                ctx.fillStyle = "#cbd5e1";
+                ctx.font = "600 35px 'Segoe UI', sans-serif";
+                ctx.fillText(subprecio, 115, 1445);
+
+                dibujarPieAsesor(75, 1600, 930, contacto, true);
+            }
+
+            // =================================================================
+            // 07. FICHA TÉCNICA & SPECS PRO (Bloques de especificaciones en columna)
+            // =================================================================
+            else if (estiloActivo === 6) {
+                ctx.fillStyle = "#111319";
+                ctx.fillRect(0, 0, W, H);
+
+                // Cinta vertical izquierda con los 4 colores Fiat
+                FLAG_COLORS.forEach((c, i) => {
+                    ctx.fillStyle = c;
+                    ctx.fillRect(i * 16, 0, 16, H);
+                });
+
+                dibujarMarcaFiat(110, 75, "#ffffff", 1.05);
+
+                ctx.fillStyle = "#ffffff";
+                ctx.font = "900 66px 'Segoe UI', sans-serif";
+                ctx.fillText(`FIAT ${mod.nombre}`, 110, 220);
+
+                dibujarFoto(110, 265, 895, 590, 24);
+
+                // 3 Bloques horizontales de ventajas con check
+                const tags = [
+                    document.getElementById("tag1").value,
+                    document.getElementById("tag2").value,
+                    document.getElementById("tag3").value
+                ].filter(t => t.trim() !== "");
+
+                let specY = 895;
+                tags.forEach(t => {
+                    ctx.fillStyle = "#1a1e28";
+                    ctx.beginPath();
+                    ctx.roundRect(110, specY, 895, 76, 16);
+                    ctx.fill();
+
+                    ctx.fillStyle = colorActivo;
+                    ctx.beginPath();
+                    ctx.arc(155, specY + 38, 16, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    ctx.fillStyle = "#f8fafc";
+                    ctx.font = "700 30px 'Segoe UI', sans-serif";
+                    ctx.fillText(t, 195, specY + 48);
+                    specY += 92;
+                });
+
+                // Oferta abajo
+                ctx.fillStyle = colorActivo;
+                ctx.beginPath();
+                ctx.roundRect(110, 1210, 895, 310, 26);
+                ctx.fill();
+
+                ctx.fillStyle = txtSobreColor;
+                ctx.font = "800 26px 'Segoe UI', sans-serif";
+                ctx.fillText(badge.toUpperCase(), 150, 1275);
+
+                ctx.font = "900 78px 'Segoe UI', sans-serif";
+                ctx.fillText(precio, 150, 1375);
+
+                ctx.font = "700 36px 'Segoe UI', sans-serif";
+                ctx.fillText(subprecio, 150, 1445);
+
+                dibujarPieAsesor(110, 1580, 895, contacto, true);
+            }
+
+            // =================================================================
+            // 08. CATÁLOGO MINIMALISTA BLANCO (Estética limpia de agencia)
+            // =================================================================
+            else {
+                ctx.fillStyle = "#ffffff";
+                ctx.fillRect(0, 0, W, H);
+
+                dibujarMarcaFiat(80, 80, "#0f172a", 1.15);
+
+                ctx.fillStyle = "#64748b";
+                ctx.font = "700 24px 'Segoe UI', sans-serif";
+                ctx.fillText(badge.toUpperCase(), 80, 210);
+
+                ctx.fillStyle = "#0f172a";
+                ctx.font = "900 76px 'Segoe UI', sans-serif";
+                ctx.fillText(mod.nombre, 80, 290);
+
+                // Foto limpia con sombra suave
+                ctx.save();
+                ctx.shadowColor = "rgba(15,23,42,0.16)";
+                ctx.shadowBlur = 35;
+                ctx.shadowOffsetY = 18;
+                dibujarFoto(80, 345, 920, 700, 24);
+                ctx.restore();
+
+                dibujarPildorasSpecs(80, 1105, 920, "#f1f5f9", "#0f172a");
+
+                // Línea de color de marca
+                ctx.fillStyle = colorActivo;
+                ctx.fillRect(80, 1285, 160, 12);
+
+                ctx.fillStyle = "#0f172a";
+                ctx.font = "900 82px 'Segoe UI', sans-serif";
+                ctx.fillText(precio, 80, 1400);
+
+                ctx.fillStyle = "#475569";
+                ctx.font = "600 36px 'Segoe UI', sans-serif";
+                ctx.fillText(subprecio, 80, 1465);
+
+                dibujarPieAsesor(80, 1595, 920, contacto, false);
             }
         }
 
-        dibujarTarjeta();
+        dibujar();
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js').catch(() => {});
+        }
     </script>
 </body>
 </html>
